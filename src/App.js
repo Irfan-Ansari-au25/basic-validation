@@ -8,12 +8,14 @@ function App() {
 
   const addUserHandler = (uName, uAge) => {
     setUserList((preState) => {
+      // console.log("here");
       return [
         ...preState,
         { name: uName, age: uAge, id: Math.random().toString() },
       ];
     });
   };
+
   return (
     <div>
       <AddUser onAddUser={addUserHandler} />
