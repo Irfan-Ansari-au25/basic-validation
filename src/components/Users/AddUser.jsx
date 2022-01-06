@@ -4,15 +4,21 @@ import classes from "./AddUser.module.css";
 import Button from "../UI/Button";
 import { useState } from "react";
 import ErrorModal from "../UI/ErrorModal";
+import { useRef } from "react";
+import ReactDOM from "react-dom";
 
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
   const [error, setError] = useState();
+  const enteredUsernameRef = useRef();
+
+  // ref to link html element with JS
+  // console.log(enteredUsernameRef.current.value);
 
   const addUserHandler = (event) => {
     event.preventDefault();
-
+    // console.log(enteredUsername);
     // if enteredUsername and enteredAge is empty
     if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
       setError({
@@ -66,6 +72,7 @@ const AddUser = (props) => {
             type="text"
             value={enteredUsername}
             onChange={usernameChangehandler}
+            // ref={enteredUsernameRef}
           />
           <label htmlFor="age">Age (Years)</label>
           <input
